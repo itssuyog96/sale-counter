@@ -1,0 +1,25 @@
+<mat-grid-list cols="1" rowHeight="3:1">
+    <mat-grid-tile>
+        <div>
+            <h3 *ngIf = "auth.user == null">Login to continue</h3>
+            <h3 *ngIf = "auth.user">Welcome {{ auth.user.displayName }}</h3>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <firebase-ui (signInSuccessWithAuthResult)="onSignInSuccess($event)"></firebase-ui>
+        </div>
+        <button *ngIf = "auth.user" class = "btn-action" mat-raised-button color = "primary" (click)="openSale()">Continue to App</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button *ngIf = "auth.user && auth.isAdmin" class = "btn-action" mat-raised-button color = "primary" (click)="openReport()">Report</button>
+        <button *ngIf = "auth.user && auth.isAdmin" class = "btn-action" mat-raised-button color = "primary" (click)="openSettings()">Settings</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button class = "btn-action" *ngIf = "auth.user" mat-raised-button color = "primary" (click)="signOut()">Log Out</button>
+    </mat-grid-tile>
+</mat-grid-list>

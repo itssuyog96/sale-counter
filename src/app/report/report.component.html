@@ -1,0 +1,41 @@
+<div>
+    <button class="btn-report-date" mat-stroked-button disabled>{{reportDate}}</button>
+</div>
+<div class="table-wrapper mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData()" matSortActive="recordedOn" matSortDirection="asc">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="method">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Method </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.method | paymentMethod}}
+            <!-- <button mat-stroked-button disabled></button> -->
+        </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId </th>
+        <td mat-cell *matCellDef="let element"> {{((element.userId | user) | async )?.displayName.split(' ')[0]}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="recordedOn">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.recordedOn | time}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount | currency}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row [ngClass]="{'undo-sale': row.amount < 0 }" *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Total Amount : {{reportTotal | currency}}</button>
+    </div>
+  </div>

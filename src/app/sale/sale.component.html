@@ -1,0 +1,64 @@
+<div class="container-wrapper">
+    <div flex class="container" layout="row">
+        <mat-progress-bar *ngIf = "saleService.inProgress" mode="indeterminate" ></mat-progress-bar>
+            <mat-grid-list cols="1" rowHeight="1:0.25">
+                <mat-grid-tile>
+                    <input disabled [(ngModel)]="amountDisplay" class="input-main" type="text" placeholder="0"/>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="3" rowHeight="1.25:1">
+                <mat-grid-tile>
+                    <button (click)="register(1)" class="btn-number" mat-raised-button>1</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(2)" class="btn-number" mat-raised-button >2</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(3)" class="btn-number" mat-raised-button >3</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(4)" class="btn-number" mat-raised-button >4</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(5)" class="btn-number" mat-raised-button >5</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(6)" class="btn-number" mat-raised-button >6</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(7)" class="btn-number" mat-raised-button >7</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(8)" class="btn-number" mat-raised-button >8</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(9)" class="btn-number" mat-raised-button >9</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register('C')" class="btn-number" mat-raised-button >C</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register(0)" class="btn-number" mat-raised-button >0</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="register('.')" class="btn-number" mat-raised-button >.</button>    
+                </mat-grid-tile>
+              </mat-grid-list>
+              <mat-grid-list cols="4" rowHeight="1:1">
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.CARD)" class="btn-action" mat-raised-button color="primary">CARD</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.CASH)" class="btn-action" mat-raised-button color="primary">CASH</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.EPAY)" class="btn-action" mat-raised-button color="primary">EPAY</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.CREDIT)" class="btn-action" mat-raised-button color="primary">CREDIT</button>    
+                </mat-grid-tile>
+              </mat-grid-list>
+              <hr>
+              <button mat-raised-button color="warn" class="btn-action" (click)="undoLastSale()" *ngIf="lastSaleEntry">Undo last transaction</button>
+    </div>
+</div>

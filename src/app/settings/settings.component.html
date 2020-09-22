@@ -1,0 +1,10 @@
+<mat-list>
+    <mat-list-item *ngFor="let user of users">
+      <img matListAvatar [src]="user?.photoURL" alt="...">
+      <h3 matLine> {{user?.displayName}} </h3>
+      <p matLine>
+        <span> {{user?.email}} </span>
+        <span class="demo-2"> -- {{user.uid}} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
