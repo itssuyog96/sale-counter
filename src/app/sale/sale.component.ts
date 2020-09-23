@@ -28,7 +28,7 @@ export class SaleComponent implements OnInit {
   }
 
   account(method: PaymentMethod) {
-    if(this.amount != 0){
+    if(this.amount > 0){
       const sale = this.prepareSaleEntry(method);
       this.saleService.addSaleEntry(sale);
       this.lastSaleEntry = sale;
