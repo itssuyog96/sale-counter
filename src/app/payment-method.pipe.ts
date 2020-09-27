@@ -17,6 +17,8 @@ export class PaymentMethodPipe implements PipeTransform {
         return "EPAY";
       case PaymentMethod.CREDIT:
         return "CRED";
+      case PaymentMethod.RETURN:
+        return "RETURN";
     }
   }
 

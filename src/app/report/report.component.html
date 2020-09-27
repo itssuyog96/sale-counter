@@ -32,10 +32,25 @@
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row [ngClass]="{'undo-sale': row.amount < 0 }" *matRowDef="let row; columns: displayedColumns;">
+      <tr mat-row [ngClass]="(row.amount < 0 ? ( row.method == paymentMethod.RETURN ? 'return-sale' : 'undo-sale' ) : '')" *matRowDef="let row; columns: displayedColumns;">
       </tr>
     </table>
     <div>
         <button class="btn-report-date" mat-stroked-button disabled>Total Amount : {{reportTotal | currency}}</button>
     </div>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Cash Amount : {{cashTotal | currency}}</button>
+    </div>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Card Amount : {{cardTotal | currency}}</button>
+    </div>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Epay Amount : {{epayTotal | currency}}</button>
+    </div>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Credit Amount : {{creditTotal | currency}}</button>
+    </div>
+    <div>
+        <button class="btn-report-date" mat-stroked-button disabled>Return Goods Amount : {{returnTotal | currency}}</button>
+  </div>
   </div>

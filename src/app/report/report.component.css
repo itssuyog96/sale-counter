@@ -7,8 +7,16 @@ table {
     height: 93%;
 }
 
-.undo-sale {
+.undo-sale .mat-cell {
     background-color: red;
+    color: white;
+}
+
+.return-sale .mat-cell {
+    margin: 10px;
+    border-color: red;
+    border-width: medium;
+    border-radius: 0.5em;
 }
 
 .btn-report-date {

@@ -20,6 +20,14 @@
 .btn-action {
     height: 90%;
     width: 100%;
+    font-size: 0.75em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.btn-action-undo {
+    height: 90%;
+    width: 100%;
     font-size: 1.5em;
     margin-left: 0.1em;
     margin-right: 0.1em;
@@ -34,4 +42,8 @@
     border: none;
     margin-right: 0.3em;
     margin-left: 0.3em;
+}
+
+.undo-btn-details {
+    margin-top: -10px;
 }

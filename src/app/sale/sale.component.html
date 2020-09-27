@@ -44,12 +44,12 @@
                     <button (click)="register('.')" class="btn-number" mat-raised-button >.</button>    
                 </mat-grid-tile>
               </mat-grid-list>
-              <mat-grid-list cols="4" rowHeight="1:1">
-                <mat-grid-tile>
-                    <button (click)="account(paymentMethod.CARD)" class="btn-action" mat-raised-button color="primary">CARD</button>    
-                </mat-grid-tile>
+              <mat-grid-list cols="5" rowHeight="1:1">
                 <mat-grid-tile>
                     <button (click)="account(paymentMethod.CASH)" class="btn-action" mat-raised-button color="primary">CASH</button>    
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.CARD)" class="btn-action" mat-raised-button color="primary">CARD</button>    
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <button (click)="account(paymentMethod.EPAY)" class="btn-action" mat-raised-button color="primary">EPAY</button>    
@@ -57,8 +57,14 @@
                 <mat-grid-tile>
                     <button (click)="account(paymentMethod.CREDIT)" class="btn-action" mat-raised-button color="primary">CREDIT</button>    
                 </mat-grid-tile>
+                <mat-grid-tile>
+                    <button (click)="account(paymentMethod.RETURN)" class="btn-action" mat-raised-button color="primary">RETURN</button>    
+                </mat-grid-tile>
               </mat-grid-list>
               <hr>
-              <button mat-raised-button color="warn" class="btn-action" (click)="undoLastSale()" *ngIf="lastSaleEntry">Undo last transaction</button>
+              <button mat-raised-button color="warn" class="btn-action-undo" (click)="undoLastSale()" *ngIf="lastSaleEntry">
+                  <div>Undo Last Transaction</div>
+                  <div class="undo-btn-details">{{lastSaleEntry?.method | paymentMethod}} - {{lastSaleEntry?.amount | currency}}</div>
+              </button>
     </div>
 </div>
