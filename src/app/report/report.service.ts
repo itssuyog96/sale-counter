@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { DateService } from '../date.service';
@@ -10,19 +10,19 @@ import { DateService } from '../date.service';
 export class ReportService {
 
   constructor(
-    private database: AngularFireDatabase, 
+    private store: AngularFirestore, 
     private auth:AuthService, 
     private router: Router,
     private dateService: DateService) { }
 
   getDaySaleEntriesByUserId(userId) {
-    return this.database.list(this.dateService.getFormattedDate() + "/" + userId).valueChanges();
+    return this.store.collection(`sales/${userId}/${this.dateService.getFormattedDate()}`).valueChanges();
   }
 
   getMyDaySaleEntries() {
     if(this.auth.user)
     {
-      return this.database.list(this.dateService.getFormattedDate() + "/" + this.auth.user.uid).valueChanges();
+      return this.store.collection(`sales/${this.auth.user}/${this.dateService.getFormattedDate()}`).valueChanges();
     } else {
       this.router.navigate(['login']);
     }

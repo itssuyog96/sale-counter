@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
-import { Observable } from 'rxjs';
 import { UserObject } from './user-object';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
 
   public user: User;
   public isAdmin: boolean = false;
-  constructor(private auth: AngularFireAuth, private database: AngularFireDatabase) {
+  constructor(private auth: AngularFireAuth, private store: AngularFirestore, private database: AngularFireDatabase) {
     this.auth.authState.subscribe(user => {
       if(user)
       {
@@ -24,6 +24,7 @@ export class AuthService {
           uid: user.uid,
           photoURL: user.photoURL
         }
+        this.store.doc(`users/${user.uid}`).set(userObject);
         this.database.object("users/" + user.uid).update(userObject);
         const getRole = this.database.object("roles/" + user.uid).valueChanges().subscribe(role => {
           if(role)

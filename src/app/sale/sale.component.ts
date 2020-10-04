@@ -123,7 +123,7 @@ export class SaleComponent implements OnInit {
       method,
       amount: this.amount,
       userId: this.auth.user.uid,
-      recordedOn: firebase.database.ServerValue.TIMESTAMP,
+      recordedOn: firebase.firestore.FieldValue.serverTimestamp(),
       date: this.dateService.getFormattedDate()
     }
     return saleEntry;

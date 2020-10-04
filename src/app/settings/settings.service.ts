@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User } from 'firebase';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';

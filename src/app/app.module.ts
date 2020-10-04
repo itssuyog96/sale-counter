@@ -14,6 +14,7 @@ import * as firebaseui from 'firebaseui';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
@@ -56,7 +57,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   tosUrl: 'home',
   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
-  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
+  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
 
 const MATERIAL_MODULES = [
@@ -92,6 +93,7 @@ const MATERIAL_MODULES = [
     FlexLayoutModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
